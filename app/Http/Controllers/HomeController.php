@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Services\MySession;
-use Auth;
+use App\Models\People;
+//use App\Services\MySession;
+//use Auth;
 
 class HomeController extends Controller
 {
@@ -46,4 +47,26 @@ class HomeController extends Controller
         return response()->json($user_info);
     }
 
+    public function verRoles()
+    {
+        $data = User::hasRole();
+        return $data;
+    }
+
+    public function verPeople()
+    {
+        $data = People::all();
+        return $data;
+    }
+
+    public function nuevoPeople()
+    {
+        $data = new People();
+        $data->firstname = 'Jhon Rambo';
+        $data->lastname = 'Stallone';
+        $data->birthdate = '1956-05-15';
+        $data->created_by = auth()->user()->id;
+        $data->save();
+    }
 }
+

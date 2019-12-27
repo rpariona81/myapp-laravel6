@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Session;
 
 class User extends Authenticatable
 {
@@ -39,8 +40,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $with = 'sessions';
+
     /**
-     * Agregamos la conexion a la tabla t_roles
+     * Agregamos la conexion a la tabla t_role_user
      */
     public function roles(){
         return $this
@@ -80,5 +83,9 @@ class User extends Authenticatable
             return true;
         }
         return false;
+    }
+
+    public function sessions(){
+        return $this->hasMany(Session::class);
     }
 }
