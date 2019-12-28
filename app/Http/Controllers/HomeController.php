@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\People;
+use App\Services\PeopleService;
 //use App\Services\MySession;
 //use Auth;
 
@@ -37,7 +38,7 @@ class HomeController extends Controller
     }
 
     public function getUserInfo(){
-        $user_info = array(); 
+        $user_info = array();
         $user_info['user_name']  = (auth()->check()) ? auth()->user()->username : null;
         $user_info['user_id'] = (auth()->check()) ? auth()->user()->id : null;
         $user_info['user_email'] = (auth()->check()) ? auth()->user()->email : null;
@@ -67,6 +68,15 @@ class HomeController extends Controller
         $data->birthdate = '1956-05-15';
         $data->created_by = auth()->user()->id;
         $data->save();
+    }
+
+    public function testService()
+    {
+        $data = new \stdClass();
+        $data->firstname = 'Jhony';
+        $data->lastname = 'Bravo';
+        $data->birthdate = '1975-08-15';
+        PeopleService::create($data);
     }
 }
 
