@@ -50,7 +50,6 @@ class CreateViewSessions extends Migration
             LEFT JOIN t_users t2 ON t1.user_id=t2.id
             LEFT JOIN t_role_user t3 ON t2.id=t3.user_id
             LEFT JOIN t_roles t4 ON t3.role_id=t4.id
-            WHERE CONVERT(date,DATEADD(s, t1.last_activity , '19700101'),106) = CONVERT(date,GETDATE(),106)
             ");
         }
     }

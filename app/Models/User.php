@@ -13,6 +13,8 @@ class User extends Authenticatable
 
     protected $table = 't_users';
 
+    protected $dateFormat = 'Ymd h:i:s';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -47,8 +49,8 @@ class User extends Authenticatable
      */
     public function roles(){
         return $this
-            ->belongsToMany('App\Models\Role', 't_role_user', 'user_id', 'role_id')
-            ->withTimestamps();
+            ->belongsToMany('App\Models\Role', 't_role_user', 'user_id', 'role_id');
+            //->withTimestamps();
     }
 
     /**
@@ -76,7 +78,7 @@ class User extends Authenticatable
         }
         return false;
     }
-    
+
     public function hasRole($role)
     {
         if ($this->roles()->where('rolename', $role)->first()) {
