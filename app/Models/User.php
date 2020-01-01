@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Carbon;
 use App\Models\Session;
 
 class User extends Authenticatable
@@ -13,7 +14,7 @@ class User extends Authenticatable
 
     protected $table = 't_users';
 
-    protected $dateFormat = 'Ymd h:i:s';
+    //protected $dateFormat = 'Ymd h:i:s';
 
     /**
      * The attributes that are mass assignable.
@@ -43,6 +44,22 @@ class User extends Authenticatable
     ];
 
     protected $with = 'sessions';
+
+    public function setCreatedAtAttribute( $value ) {
+        if (config('database.default') == 'mysql') {
+            $this->attributes['created_at'] = (new Carbon($value))->format('Y-m-d h:i:s');
+        }elseif(config('database.default') == 'sqlsrv'){
+            $this->attributes['created_at'] = (new Carbon($value))->format('Ymd h:i:s');
+        }
+    }
+
+    public function setUpdatedAtAttribute( $value ) {
+        if (config('database.default') == 'mysql') {
+            $this->attributes['updated_at'] = (new Carbon($value))->format('Y-m-d h:i:s');
+        }elseif(config('database.default') == 'sqlsrv'){
+            $this->attributes['updated_at'] = (new Carbon($value))->format('Ymd h:i:s');
+        }
+    }
 
     /**
      * Agregamos la conexion a la tabla t_role_user
