@@ -25,6 +25,8 @@ class People extends Model
             $this->attributes['created_at'] = (new Carbon($value))->format('Y-m-d h:i:s');
         }elseif(config('database.default') == 'sqlsrv'){
             $this->attributes['created_at'] = (new Carbon($value))->format('Ymd h:i:s');
+        }else{
+            $this->attributes['created_at'] = (new Carbon($value))->format('Y-m-d h:i:s');
         }
     }
 
@@ -33,6 +35,8 @@ class People extends Model
             $this->attributes['updated_at'] = (new Carbon($value))->format('Y-m-d h:i:s');
         }elseif(config('database.default') == 'sqlsrv'){
             $this->attributes['updated_at'] = (new Carbon($value))->format('Ymd h:i:s');
+        }else{
+            $this->attributes['updated_at'] = (new Carbon($value))->format('Y-m-d h:i:s');
         }
     }
 
