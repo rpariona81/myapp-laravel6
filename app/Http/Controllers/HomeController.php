@@ -73,9 +73,9 @@ class HomeController extends Controller
     public function testService()
     {
         $data = new \stdClass();
-        $data->firstname = 'Jhony';
-        $data->lastname = 'Bravo';
-        $data->birthdate = '1975-08-15';
+        $data->firstname = 'Homero';
+        $data->lastname = 'Adams';
+        $data->birthdate = '1955-06-15';
         PeopleService::create($data);
     }
 }
