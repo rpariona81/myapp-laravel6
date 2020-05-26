@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\People;
+use App\Models\Session;
 use App\Services\PeopleService;
 //use App\Services\MySession;
 //use Auth;
@@ -77,6 +78,12 @@ class HomeController extends Controller
         $data->lastname = 'Adams';
         $data->birthdate = '1955-06-15';
         PeopleService::create($data);
+    }
+
+    public function verSesiones()
+    {
+        $data = Session::all();
+        return $data;
     }
 }
 

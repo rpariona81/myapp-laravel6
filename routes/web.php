@@ -23,3 +23,5 @@ Route::get('/home/verpeople', 'HomeController@verPeople');
 Route::get('/home/nuevopeople', 'HomeController@nuevoPeople');
 Route::get('/home/getUserInfo', 'HomeController@getUserInfo')->name('getUserInfo');
 Route::get('/home/testservice', 'HomeController@testService');
+
+Route::get('/home/versesiones', 'HomeController@verSesiones');

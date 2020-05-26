@@ -19,11 +19,16 @@ class MySession extends DatabaseSessionHandler
 
         if ($this->exists) {
             $this->getQuery()->where('id', $sessionId)->update([
-                'payload' => base64_encode($data), 'last_activity' => time(), 'user_id' => $user_id,
+                'payload' => base64_encode($data), 
+                'last_activity' => time(), 
+                'user_id' => $user_id,
             ]);
         } else {
             $this->getQuery()->insert([
-                'id' => $sessionId, 'payload' => base64_encode($data), 'last_activity' => time(), 'user_id' => $user_id,
+                'id' => $sessionId, 
+                'payload' => base64_encode($data), 
+                'last_activity' => time(), 
+                'user_id' => $user_id,
             ]);
         }
 
