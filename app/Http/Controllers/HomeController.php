@@ -64,8 +64,8 @@ class HomeController extends Controller
     public function nuevoPeople()
     {
         $data = new People();
-        $data->firstname = 'Jhon Rambo';
-        $data->lastname = 'Stallone';
+        $data->firstname = 'Ítalo';
+        $data->lastname = 'Ramonés';
         $data->birthdate = '1956-05-15';
         $data->created_by = auth()->user()->id;
         $data->save();
@@ -74,8 +74,8 @@ class HomeController extends Controller
     public function testService()
     {
         $data = new \stdClass();
-        $data->firstname = 'Homero';
-        $data->lastname = 'Adams';
+        $data->firstname = 'Rúben';
+        $data->lastname = 'Magüiña';
         $data->birthdate = '1955-06-15';
         PeopleService::create($data);
     }
