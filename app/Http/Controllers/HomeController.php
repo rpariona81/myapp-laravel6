@@ -104,14 +104,16 @@ class HomeController extends Controller
     {
         $data = new \stdClass();
         //$data->id = 1;
-        $data->id = 2;
+        //$data->id = 2;
+        $data->id = 3;
         //$data->firstname = 'Jhon';
-        //$data->firstname = 'Teófilo';
-        $data->firstname = 'Ramón';
+        $data->firstname = 'Teófilo';
+        //$data->firstname = 'Ramón';
         //$data->lastname = 'Doe';
-        $data->lastname = 'Váldez';
-        //$data->lastname = 'Cubillas';
-        $data->birthdate = '1955-06-15';
+        //$data->lastname = 'Váldez';
+        $data->lastname = 'Cubillas';
+        //$data->birthdate = '1955-06-15';
+        $data->birthdate = '1999-06-15';
         //PeopleService::create($data);
         PeopleService::updatePeople($data);
     }
