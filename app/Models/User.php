@@ -43,7 +43,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected $with = 'sessions';
+    protected $with = ['sessions','roles'];
 
     public function setCreatedAtAttribute( $value ) {
         if (config('database.default') == 'mysql') {
@@ -71,7 +71,10 @@ class User extends Authenticatable
     public function roles(){
         return $this
             ->belongsToMany('App\Models\Role', 't_role_user', 'user_id', 'role_id');
-            //->withTimestamps();
+    }
+
+    public function sessions(){
+        return $this->hasMany(Session::class);
     }
 
     /**
@@ -108,7 +111,42 @@ class User extends Authenticatable
         return false;
     }
 
-    public function sessions(){
-        return $this->hasMany(Session::class);
+    
+
+    //https://www.codechief.org/article/laravel-7-role-based-authentication-tutorial
+    /*public function users(){
+        return $this
+            ->belongsToMany('App\Models\Role');
+    }*/
+
+    //https://laracasts.com/discuss/channels/laravel/add-a-new-attribute-in-authuser-session-in-laravel-53?page=1
+    public function getRolenameAttribute(){
+        {
+            if ($this->roles->first()->rolename){
+
+                return $this->roles()->rolename;
+                }
+
+        return null;
+
+        }
     }
+
+    public function getRoleIdAttribute(){
+        {
+            if ($this->roles->first()->role_id){
+
+                return $this->roles()->role_id;
+                }
+
+        return null;
+
+        }
+    }
+
+    public function role(){
+        return $this->hasOne('App\Models\Role', 'user_id', 'role_id');
+    }
+    
+
 }

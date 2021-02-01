@@ -13,8 +13,7 @@ class Role extends Model
     //
     public function users(){
         return $this
-            ->belongsToMany('App\Models\User')
-            ->withTimestamps();
+            ->belongsToMany('App\Models\User','t_role_user', 'user_id', 'role_id')->get();
     }
 
     public function setCreatedAtAttribute( $value ) {

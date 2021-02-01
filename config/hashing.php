@@ -17,6 +17,10 @@ return [
 
     'driver' => 'bcrypt',
 
+    //'driver' => 'argon',
+    
+    //'driver' => 'argon2id',
+
     /*
     |--------------------------------------------------------------------------
     | Bcrypt Options

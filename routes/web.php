@@ -20,8 +20,15 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home/verusers', 'HomeController@verUsers')->name('verUsers');
 Route::get('/home/verpeople', 'HomeController@verPeople');
+Route::get('/home/verroles', 'HomeController@verRoles');
 Route::get('/home/nuevopeople', 'HomeController@nuevoPeople');
 Route::get('/home/getUserInfo', 'HomeController@getUserInfo')->name('getUserInfo');
 Route::get('/home/testservice', 'HomeController@testService');
 
 Route::get('/home/versesiones', 'HomeController@verSesiones');
+
+Route::get('/home/verinstitutos', 'HomeController@verInstitutos');
+
+Route::get('/home/testUpdate', 'HomeController@updInstituto');
+
+Route::get('/home/testservice2', 'HomeController@updPeople');
