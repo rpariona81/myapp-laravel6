@@ -15,11 +15,11 @@ class CreateBKPeopleTable extends Migration
     {
         Schema::create('bk_people', function (Blueprint $table) {
             $table->bigIncrements('id_backup');
-            $table->bigInteger('id');
-            $table->string('firstname');
+            $table->bigInteger('id')->nullable();
+            $table->string('firstname')->nullable();
             $table->string('lastname')->nullable();
             $table->date('birthdate')->nullable();
-            $table->biginteger('created_by');
+            $table->biginteger('created_by')->nullable();
             $table->biginteger('updated_by')->nullable();
             $table->timestamps();
         });

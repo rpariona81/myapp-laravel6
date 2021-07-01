@@ -18,8 +18,8 @@ class CreateTableRoleUser extends Migration
             $table->biginteger('role_id')->unsigned();
             $table->biginteger('user_id')->unsigned();*/
             $table->increments('id');
-            $table->integer('role_id')->unsigned();
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned();  //Primero define usuario
+            $table->integer('role_id')->unsigned();  //Luego rol
         });
     }
 

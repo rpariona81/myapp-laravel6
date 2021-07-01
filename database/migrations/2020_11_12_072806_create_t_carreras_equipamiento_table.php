@@ -37,6 +37,7 @@ class CreateTCarrerasEquipamientoTable extends Migration
             $table->decimal('costo_unitario',10,2)->nullable();
             $table->string('fuente_consulta')->nullable();
             $table->string('equipo_costeado',4000)->nullable();
+            $table->tinyInteger('es_basico')->nullable();
             $table->tinyInteger('referencia_matriz')->nullable();
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();

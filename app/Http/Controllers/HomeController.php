@@ -93,9 +93,9 @@ class HomeController extends Controller
     public function testService()
     {
         $data = new \stdClass();
-        $data->firstname = 'Raul';
-        $data->lastname = 'Cubillas';
-        $data->birthdate = '1955-06-15';
+        $data->firstname = 'Toby';
+        $data->lastname = "McGuire";
+        $data->birthdate = '1965-06-15';
         //PeopleService::create($data);
         PeopleService::execInsert($data);
     }
@@ -104,17 +104,35 @@ class HomeController extends Controller
     {
         $data = new \stdClass();
         //$data->id = 1;
-        //$data->id = 2;
-        $data->id = 3;
+        $data->id = 2;
+        //$data->id = 3;
         //$data->firstname = 'Jhon';
         $data->firstname = 'Teófilo';
-        //$data->firstname = 'Ramón';
+        //$data->firstname = 'Juanes';
+        //$data->firstname = 'Julio';
         //$data->lastname = 'Doe';
-        //$data->lastname = 'Váldez';
+        //$data->lastname = 'Ribeyro';
+        //$data->lastname = 'Bonachon';
         $data->lastname = 'Cubillas';
         //$data->birthdate = '1955-06-15';
-        $data->birthdate = '1999-06-15';
+        $data->birthdate = '2000-09-15';
+        //$data->birthdate = '1989-06-15';
         //PeopleService::create($data);
+        /*$people = People::findOrFail($data->id);
+            $people->firstname = $data->firstname;
+            $people->lastname = $data->lastname;
+            $people->birthdate = $data->birthdate;
+            $people->updated_by = auth()->user()->id;
+            //dd($people);
+            $people->save();
+            /*DB::table('t_people')
+            ->where('id', $data->id)
+            ->update(['firstname' => $data->firstname,
+                     'lastname' => $data->lastname]);*/
+            //dd($people);
+            //$people = People::update($people);
+        //return $data;
+            //dd($people);
         PeopleService::updatePeople($data);
     }
 

@@ -17,7 +17,7 @@ class CreateTRegistroEquipamientoTable extends Migration
             //$table->bigIncrements('id');
             //$table->integer('id');
             $table->increments('id');	
-            $table->integer('id_marco')->unsigned()->nullable();
+            $table->integer('id_instituto_carrera')->unsigned()->nullable();
             //$table->integer('id_instituto')->nullable();
             //$table->integer('id_carrera')->nullable();
             $table->integer('id_equipamiento')->nullable();
@@ -40,7 +40,7 @@ class CreateTRegistroEquipamientoTable extends Migration
             $table->integer('updated_by')->nullable();
             //$table->primary('id');	
             $table->timestamps();
-            $table->foreign('id_marco')->references('id')->on('t_institutos_carreras')->onDelete('SET NULL');
+            $table->foreign('id_instituto_carrera')->references('id')->on('t_institutos_carreras')->onDelete('SET NULL');
         });
     }
 
