@@ -16,9 +16,9 @@ class CreateTInstitutosCarrerasTable extends Migration
         Schema::create('t_institutos_carreras', function (Blueprint $table) {
             //$table->integer('id');
             $table->increments('id');	
-            $table->string('cod_mod')->nullable();
+            //$table->string('cod_mod')->nullable();
             $table->integer('id_instituto')->unsigned()->nullable();
-            $table->string('cod_generado')->nullable();
+            //$table->string('cod_generado')->nullable();
             $table->integer('id_carrera')->unsigned()->nullable();
             $table->tinyInteger('activo')->default(1);
             $table->date('fecha_autorizacion')->nullable();

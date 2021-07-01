@@ -13,6 +13,7 @@ class CreateTRegistroEquipamientoTable extends Migration
      */
     public function up()
     {
+        //https://stackoverflow.com/questions/45473624/laravel-5-4-specific-table-migration
         Schema::create('t_registro_equipamiento', function (Blueprint $table) {
             //$table->bigIncrements('id');
             //$table->integer('id');
