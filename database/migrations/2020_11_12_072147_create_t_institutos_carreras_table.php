@@ -28,7 +28,7 @@ class CreateTInstitutosCarrerasTable extends Migration
             $table->string('d_ind_aer',20)->nullable();
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
-            //$table->primary('id');	
+            $table->string('programa_anterior')->nullable();
             $table->timestamps();
             $table->foreign('id_instituto')->references('id')->on('t_institutos')->onDelete('SET NULL');
             $table->foreign('id_carrera')->references('id')->on('t_carreras')->onDelete('SET NULL');

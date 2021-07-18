@@ -17,7 +17,7 @@ class CreateTInstitutosTable extends Migration
             //$table->integer('id');
             $table->increments('id');	
             $table->integer('id_region')->unsigned()->nullable();
-            $table->string('region')->nullable();
+            //$table->string('region')->nullable();
             $table->char('cod_mod',7);
             $table->char('anexo',2)->nullable();
             $table->char('cod_local',6)->nullable();

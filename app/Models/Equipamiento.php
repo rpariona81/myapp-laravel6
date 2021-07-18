@@ -2,34 +2,30 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Region;
 
-
-class Instituto extends Model
+class Equipamiento extends Model
 {
-    protected $table = 't_institutos';
+    protected $table = 't_registro_equipamiento';
     //
     //protected $appends = ['age'];
     protected $fillable = [
-        'id_region',
-        'cod_mod',
-        'instituto',
-        'es_licenciado',
-        'rm_licenciamiento',
-        'es_idex',
-        'codgeo',
-        'd_dpto',
-        'd_prov',
-        'd_dist',
+        'id_instituto_carrera',
+        'id_equipamiento',
+        'p1_flag',
+        'otro_equipamiento',
+        'p1_tiene',
+        'p2_cant_bueno',
+        'p2_cant_regular',
+        'p2_cant_malo',
+        'p3_observacion',
+        'estado',
         'created_by',
         'updated_by'
     ];
 
-    protected $with = ['region','programas'];
     //protected $with = ['region'];
-
+    
     //protected $dateFormat = 'Ymd H:i:s';
 
     /*public function getAgeAttribute(){
@@ -55,24 +51,4 @@ class Instituto extends Model
             $this->attributes['updated_at'] = (new Carbon($value))->format('Y-m-d H:i:s');
         }
     }
-
-    /**
-     * Agregamos la conexion a la tabla t_regiones
-     */
-    public function region(){
-        /*return $this
-            ->belongsTo(Region::class,'t_regiones','id_region');*/
-        /*return $this
-            ->belongsTo('App\Models\Region','t_regiones','id_region');*/
-        return $this->belongsTo('App\Models\Region','id_region');
-    }
-
-    /**
-     * Agregamos la conexion a la tabla t_role_user
-     */
-    public function programas(){
-        return $this
-            ->belongsToMany('App\Models\Carrera', 't_institutos_carreras', 'id_instituto', 'id_carrera')->where('activo','=', 1);;
-    }
-    
 }

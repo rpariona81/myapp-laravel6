@@ -29,6 +29,14 @@ Route::get('/home/versesiones', 'HomeController@verSesiones');
 
 Route::get('/home/verinstitutos', 'HomeController@verInstitutos');
 
+Route::get('/home/verinstituto', 'HomeController@verInstituto');
+
+Route::get('/home/verregiones', 'HomeController@verRegiones');
+
+Route::get('/home/verregion', 'HomeController@verRegion');
+
 Route::get('/home/testUpdate', 'HomeController@updInstituto');
 
 Route::get('/home/testservice2', 'HomeController@updPeople');
+
+Route::get('/home/verequipamiento', 'HomeController@verEquipamiento');

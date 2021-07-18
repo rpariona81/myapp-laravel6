@@ -8,7 +8,11 @@ use App\Models\Role;
 use App\Models\People;
 use App\Models\Session;
 use App\Models\Instituto;
+use App\Models\Equipamiento;
+use App\Models\ProgramaEstudio;
 use App\Services\PeopleService;
+use App\Services\InstitutoService;
+use App\Services\RegionService;
 use Illuminate\Support\Facades\DB;
 
 //use App\Services\MySession;
@@ -106,14 +110,14 @@ class HomeController extends Controller
         //$data->id = 1;
         $data->id = 2;
         //$data->id = 3;
-        //$data->firstname = 'Jhon';
+        $data->firstname = 'Jhon';
         $data->firstname = 'Teófilo';
         //$data->firstname = 'Juanes';
         //$data->firstname = 'Julio';
         //$data->lastname = 'Doe';
         //$data->lastname = 'Ribeyro';
-        //$data->lastname = 'Bonachon';
-        $data->lastname = 'Cubillas';
+        $data->lastname = 'Bonachon';
+        //$data->lastname = 'Cubillas';
         //$data->birthdate = '1955-06-15';
         $data->birthdate = '2000-09-15';
         //$data->birthdate = '1989-06-15';
@@ -145,13 +149,44 @@ class HomeController extends Controller
 
     public function verInstitutos()
     {
-        $data = Instituto::all();
+        $data = InstitutoService::getList();
         return $data;
+    }
+
+    public function verInstituto()
+    {
+        $data = new \stdClass();
+        //$data->id = 1;
+        $data->id = 2;
+        $lista = InstitutoService::select($data);
+        return $lista;
     }
 
     public function updInstituto(){
         //DB::table('t_institutos')->whereNull('ES_LICENCIADO')->update(array('ES_LICENCIADO' => 'NO'));
         $data = Instituto::whereNull('ES_LICENCIADO')->update(array('ES_LICENCIADO' => 'NO'));
+        return $data;
+    }
+
+    public function verRegiones()
+    {
+        $data = RegionService::getList();
+        return $data;
+    }
+
+    public function verRegion()
+    {
+        $data = new \stdClass();
+        //$data->id = 1;
+        $data->id = 2;
+        $lista = RegionService::select($data);
+        return $lista;
+    }
+
+    public function verEquipamiento()
+    {
+        //$data = Equipamiento::all();
+        $data = ProgramaEstudio::all();
         return $data;
     }
 
