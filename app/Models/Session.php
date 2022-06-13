@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Session extends Model
 {
-    protected $table = 'v_sessions';
+    protected $table = 't_sessions';
     //
     protected $appends = ['expires_at'];
-    
+
     public function isExpired(){
         return $this->last_activity < Carbon::now()->subMinutes(config('session.lifetime'))->getTimestamp();
     }
