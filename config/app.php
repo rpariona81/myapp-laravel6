@@ -176,7 +176,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        //Agregado por recomendación https://laracasts.com/discuss/channels/laravel/how-to-store-users-id-in-session-table-laravel-5
+        //Agregado por recomendación 
+        //https://laracasts.com/discuss/channels/laravel/how-to-store-users-id-in-session-table-laravel-5
         App\Providers\SessionServiceProvider::class,
     ],
 
