@@ -16,9 +16,12 @@ class CreateTableSessions extends Migration
         Schema::create('t_sessions', function (Blueprint $table) {
             $table->string('id')->unique();
             $table->unsignedInteger('user_id')->nullable();
+            //$table->foreignId('user_id')->nullable();
             $table->string('ip_address', 45)->nullable();
+            $table->unsignedInteger('timestamp')->default(0);
             $table->text('user_agent')->nullable();
             $table->text('payload');
+            $table->binary('data')->nullable();
             $table->integer('last_activity');
         });
     }
