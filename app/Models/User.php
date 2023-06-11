@@ -22,13 +22,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-<<<<<<< HEAD
         'username', 'email', 'password','logged_in_at', 'logged_out_at'
-=======
-        'username', 
-        'email', 
-        'password',
->>>>>>> 754d150d2b279b46aa6e9a981ca54e36aae82791
     ];
 
     /**
@@ -45,7 +39,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    //protected $dates = ['logged_in_at', 'logged_out_at'];
+    protected $dates = ['logged_in_at', 'logged_out_at'];
     
     /**
      * The attributes that should be cast to native types.
@@ -56,12 +50,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-<<<<<<< HEAD
     //protected $with = 'sessions';
     protected $with = 'roles';
-=======
-    protected $with = ['sessions','roles'];
->>>>>>> 754d150d2b279b46aa6e9a981ca54e36aae82791
+    //protected $with = ['sessions','roles'];
 
     public function setCreatedAtAttribute( $value ) {
         if (config('database.default') == 'mysql') {
