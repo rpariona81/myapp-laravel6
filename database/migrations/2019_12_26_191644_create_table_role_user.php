@@ -15,8 +15,14 @@ class CreateTableRoleUser extends Migration
     {
         Schema::create('t_role_user', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->biginteger('role_id')->unsigned();
-            $table->biginteger('user_id')->unsigned();
+            //$table->biginteger('role_id')->unsigned();
+            //$table->biginteger('user_id')->unsigned();
+            $table->biginteger('role_id')->unsigned();//->index();
+            $table->biginteger('user_id')->unsigned();//->index();
+            $table->foreign('role_id')->references('id')->on('t_roles');
+            
+            $table->foreign('user_id')->references('id')->on('t_users');
+            $table->timestamps();
         });
     }
 

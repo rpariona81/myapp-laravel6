@@ -3,7 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Session\DatabaseSessionHandler;
+//use App\Session\DatabaseSessionHandler;
+use Illuminate\Session\DatabaseSessionHandler;
 
 class SessionServiceProvider extends ServiceProvider
 {
@@ -20,7 +21,7 @@ class SessionServiceProvider extends ServiceProvider
 
             $table = $databaseConnection->getTablePrefix() . $app['config']['session.table'];
 
-            return new DatabaseSessionHandler($databaseConnection, $table);
+            return new DatabaseSessionHandler($databaseConnection, $table,0,null);
         });
     }
 }

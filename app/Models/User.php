@@ -22,7 +22,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'password',
+        'username', 'email', 'password','logged_in_at', 'logged_out_at'
     ];
 
     /**
@@ -35,6 +35,13 @@ class User extends Authenticatable
     ];
 
     /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    //protected $dates = ['logged_in_at', 'logged_out_at'];
+    
+    /**
      * The attributes that should be cast to native types.
      *
      * @var array
@@ -43,7 +50,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected $with = 'sessions';
+    //protected $with = 'sessions';
+    protected $with = 'roles';
 
     public function setCreatedAtAttribute( $value ) {
         if (config('database.default') == 'mysql') {
@@ -54,6 +62,43 @@ class User extends Authenticatable
             $this->attributes['created_at'] = (new Carbon($value))->format('Y-m-d H:i:s');
         }
     }
+
+    public function setLoggedOutAtAttribute( $value ) {
+        if (config('database.default') == 'mysql') {
+            $this->attributes['logged_out_at'] = (new Carbon($value))->format('Y-m-d H:i:s');
+        }elseif(config('database.default') == 'sqlsrv'){
+            $this->attributes['logged_out_at'] =  Carbon::parse($value)->format('Ymd H:i:s');
+        
+        }else{
+            $this->attributes['logged_out_at'] = (new Carbon($value))->format('Y-m-d H:i:s');
+        }
+    }
+
+    //https://gist.github.com/Ademking/d6132680539af6e9ccaab6c5fc6e0619
+    //https://stackoverflow.com/questions/49999319/error-converting-nvarchar-to-datetime-data-type-using-laravel-and-mssql
+    //https://stackoverflow.com/questions/35457412/laravel-sqlsrv-unable-to-create-timestamps
+
+    // Fix SQL server date format 
+	// Only for MSSQL
+	public function fromDateTime($value)
+	{
+		if(env('DB_CONNECTION') == 'sqlsrv') {
+			return Carbon::parse(parent::fromDateTime($value))->format('Y-m-d H:i:s');
+		}
+		return $value;
+	}
+
+    public function setLoggedInAtAttribute( $value ) {
+        if (config('database.default') == 'mysql') {
+            $this->attributes['logged_in_at'] = Carbon::parse($value)->format('Y-m-d H:i:s');
+        }elseif(config('database.default') == 'sqlsrv'){
+            $this->attributes['logged_in_at'] = Carbon::parse($value)->format('Ymd H:i:s');
+        
+        }else{
+            $this->attributes['logged_in_at'] = Carbon::parse($value)->format('Y-m-d H:i:s');
+        }
+    }
+
 
     public function setUpdatedAtAttribute( $value ) {
         if (config('database.default') == 'mysql') {

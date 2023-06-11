@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        Schema::defaultStringLength(191);
+        Schema::defaultStringLength(200);
         //date_default_timezone_set('America/Lima');
     }
 }
